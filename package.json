@@ -17,5 +17,8 @@
   "author": "",
   "license": "UNLICENSED",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "14.x"
+  }
 }
