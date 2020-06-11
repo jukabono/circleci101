@@ -1,0 +1,21 @@
+{
+  "name": "test-nodejs",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^7.2.0",
+    "chai": "^4.2.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha test/buttonTest.js --timeout 10000 --exit",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "keywords": [],
+  "description": ""
+}

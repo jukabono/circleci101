@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  #run_tests:
+  build:
+    docker:
+      - image: circleci/node:14.4.0-browsers
+
+    #working_directory: ~/repo
+
+    steps:      
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+
+      - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.6/selenium-server-standalone-3.6.0.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.6.0.jar -log test-reports/selenium.log
+          background: true
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: npm test
+
+#workflows:
+#  build_test:
+#    jobs:
+#      - run_tests
+
+     
